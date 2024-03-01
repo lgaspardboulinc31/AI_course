@@ -41,14 +41,14 @@ They possess publicly available data set for Low Grade Gliomas that can be freey
   * First publication : https://www.nejm.org/doi/full/10.1056/NEJMoa1402121
   * Dataset : https://www.cbioportal.org/study/summary?id=lgg_tcga
     
-This repository contains transcriptomics data from bulk tumors but also methylation, mutational and proteic data. A diversity of model can be developped based on one modality to several. 
+This repository contains transcriptomics data from bulk tumors but also methylation, mutational and protein data. A diversity of model can be developped based on one modality to several. 
 
 One new interest I have is in the spatial transcriptomics data. Multiple studies showed the importance of tumor microenvironnment in tumor progression and relapse. I would like thus to use this new type of data to implement machine learning models. 
 
 ### AI methods
-The aim of the project is to predict relapse, which is encoded in the clinical data retrieved from TCGA. So we would apply a **classification task** to predict the categorical variable that is {0-No relapse, 1-Relapse}. We would try a diversity of algorithm and try to assess they performance. I would start with the simplest approach such as Naive Bayes classifier or logistic regression. Given the complex relationships and interactions of biological data, we might need to implement more complex method such as a neural network. 
+The aim of the project is to predict relapse, which is encoded in the clinical data retrieved from TCGA. So we would apply a **classification task** to predict the categorical variable that is {0-No relapse, 1-Relapse}. We would try a diversity of algorithms and try to assess their performance. I would start with the simplest approach such as Naive Bayes classifier or logistic regression. Given the complex relationships and interactions of biological data, we might need to implement more complex method such as a neural network. 
 
-The problem can also be seen as a **regression task** if we see the outcome not as a categorical variable but a continuous variable encoded in month for each patient. We could thus try to implement diverse model ranging from linear regression to more complex neural networks. 
+The problem can also be seen as a **regression task** if we see the outcome not as a categorical variable but as **continuous variable** encoded in month for each patient. We could thus try to implement diverse model ranging from linear regression to more complex neural networks. 
 
 Some peculiar interest for me would be to identify the most important features in each modality. Thus regression framework seems promising. 
 
@@ -59,7 +59,7 @@ These are some limitations :
 * Data availability : there is less than 300 patients in TCGA database, which limit the quantity of data. it also exist very few external data for validation.
 * Data pre-processing : the project requires a certain amount of work before actually implementing ML algorithms (data cleaning, check information, normalization etc.)
 * Features : whole transcriptomic data are of high dimension (>15,000 genes!) thus we might need perform some *feature selection* based on a-priori knowledge or other types of models (LASSO regression)
-* Spatial transcriptomics features : spatial omics is still new and my idea is to create spatial features such as co-localization indexes, distances between cell-types etcs. which require a lot of work too.
+* Spatial transcriptomics features : spatial omics is still new and my idea is to create spatial features such as co-localization indexes, distances between cell-types etcs. to describe the tumor microenvironment, which require a lot of work too.
 * Confounding effect : a confounder is a variable that influences both the dependent variable and independent variable, causing a spurious association. Multiple other clinical data are available and we will need to check for such effects before making any conclusion. 
 
 
