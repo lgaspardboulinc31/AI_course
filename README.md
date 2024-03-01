@@ -47,6 +47,7 @@ One new interest I have is in the spatial transcriptomics data. Multiple studies
 
 ### AI methods
 The aim of the project is to predict relapse, which is encoded in the clinical data retrieved from TCGA. So we would apply a **classification task** to predict the categorical variable that is {0-No relapse, 1-Relapse}. We would try a diversity of algorithm and try to assess they performance. I would start with the simplest approach such as Naive Bayes classifier or logistic regression. Given the complex relationships and interactions of biological data, we might need to implement more complex method such as a neural network. 
+
 The problem can also be seen as a **regression task** if we see the outcome not as a categorical variable but a continuous variable encoded in month for each patient. We could thus try to implement diverse model ranging from linear regression to more complex neural networks. 
 
 Some peculiar interest for me would be to identify the most important features in each modality. Thus regression framework seems promising. 
