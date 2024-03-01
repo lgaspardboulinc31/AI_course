@@ -31,38 +31,41 @@ In translational resarch :
 * Stratification of patient based on feature weights
 * New biomarkers for relapse
 
-If the results yielded by this project are usuable in a clinical setting, the output and how it works should be interpretable and user-friendly for doctors. 
-
-Describe the process of using the solution. In what kind situations is the solution needed (environment, time, etc.)? Who are the users, what kinds of needs should be taken into account?
-
-Images will make your README look nice!
-Once you upload an image to your repository, you can link link to it like this (replace the URL with file path, if you've uploaded an image to Github.)
-![Cat](https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg)
-
-If you need to resize images, you have to use an HTML tag, like this:
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg" width="300">
-
-
+If the results yielded by this project are usuable in a clinical setting, the output and how it works should be interpretable and user-friendly for doctors that are not familiar with programming.  
 
 ## Data sources and AI methods
-Where does your data come from? Do you collect it yourself or do you use data collected by someone else?
-If you need to use links, here's an example:
-[Twitter API](https://developer.twitter.com/en/docs)
+
+### Data sources
+For this project, I would like to rely on the diversity of omics data that are available in The Cancer Genome Atlas (TCGA) project funded by NIH : https://www.cancer.gov/ccg/research/genome-sequencing/tcga. 
+They possess publicly available data set for Low Grade Gliomas that can be freey retrieve along clinical data : 
+  * First publication : https://www.nejm.org/doi/full/10.1056/NEJMoa1402121
+  * Dataset : https://www.cbioportal.org/study/summary?id=lgg_tcga
+    
+This repository contains transcriptomics data from bulk tumors but also methylation, mutational and proteic data. A diversity of model can be developped based on one modality to several. 
+
+One new interest I have is in the spatial transcriptomics data. Multiple studies showed the importance of tumor microenvironnment in tumor progression and relapse. I would like thus to use this new type of data to implement machine learning models. 
+
+### AI methods
+The aim of the project is to predict relapse, which is encoded in the clinical data retrieved from TCGA. So we would apply a **classification task** to predict the categorical variable that is {0-No relapse, 1-Relapse}. We would try a diversity of algorithm and try to assess they performance. I would start with the simplest approach such as Naive Bayes classifier or logistic regression. Given the complex relationships and interactions of biological data, we might need to implement more complex method such as a neural network. 
+The problem can also be seen as a **regression task** if we see the outcome not as a categorical variable but a continuous variable encoded in month for each patient. We could thus try to implement diverse model ranging from linear regression to more complex neural networks. 
+
+Some peculiar interest for me would be to identify the most important features in each modality. Thus regression framework seems promising. 
 
 
 ## Challenges
 
-What does your project _not_ solve? Which limitations and ethical considerations should be taken into account when deploying a solution like this?
+These are some limitations : 
+* Data availability : there is less than 300 patients in TCGA database, which limit the quantity of data. it also exist very few external data for validation.
+* Data pre-processing : the project requires a certain amount of work before actually implementing ML algorithms (data cleaning, check information, normalization etc.)
+* Features : whole transcriptomic data are of high dimension (>15,000 genes!) thus we might need perform some *feature selection* based on a-priori knowledge or other types of models (LASSO regression)
+* Spatial transcriptomics features : spatial omics is still new and my idea is to create spatial features such as co-localization indexes, distances between cell-types etcs. which require a lot of work too.
+* Confounding effect : a confounder is a variable that influences both the dependent variable and independent variable, causing a spurious association. Multiple other clinical data are available and we will need to check for such effects before making any conclusion. 
+
 
 ## What next?
 
-How could your project grow and become something even more? What kind of skills, what kind of assistance would you  need to move on? 
-
+This project would grow faster and be more powerful with a fully computational biologist or computer science background expert in AI and Machine Learning. I think the help of a doctor would help to refine the biological question and interpret the results of the model, as well as give advice for its translation into clinics. 
 
 ## Acknowledgments
 
-* list here the sources of inspiration 
-* do not use code, images, data etc. from others without permission
-* when you have permission to use other people's materials, always mention the original creator and the open source / Creative Commons licence they've used
-  <br>For example: [Sleeping Cat on Her Back by Umberto Salvagnin](https://commons.wikimedia.org/wiki/File:Sleeping_cat_on_her_back.jpg#filelinks) / [CC BY 2.0](https://creativecommons.org/licenses/by/2.0)
-* etc
+* Nicolas Captier for starring all my repository
